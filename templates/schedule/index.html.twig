@@ -3,17 +3,6 @@
 {% block title %}Hello ScheduleController!{% endblock %}
 
 {% block body %}
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <h1 class="h2">Rooster</h1>
-        <div class="d-flex justify-content-start flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <div class="btn-group-lg">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Dag</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Week</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Maand</button>
-            </div>
-        </div>
-    </main>
-
 <style>
     body{
         margin-top:20px;
@@ -129,10 +118,17 @@
     }
 </style>
 
-    <div class="container">
-        <div class="timetable-img text-center">
-            <img src="img/content/timetable.png" alt="">
+<main>
+    <h1 class="h2">Rooster</h1>
+    <div class="d-flex justify-content-start flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div class="btn-group-lg">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Dag</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Week</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Maand</button>
         </div>
+    </div>
+
+    <div class="container">
         <div class="table-responsive">
             <table class="table table-bordered text-center">
                 <thead>
@@ -160,27 +156,27 @@
                        </td>
 
                        <td>
-                           <span class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Music</span>
+                           <span class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Vliegtuig HV5052</span>
                            <div class="margin-10px-top font-size14">9:00-10:00</div>
                            <div class="font-size13 text-light-gray">Ivana Wong</div>
                        </td>
                        <td>
-                           <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Dance</span>
+                           <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Vliegtuig HV5026</span>
                            <div class="margin-10px-top font-size14">9:00-10:00</div>
                            <div class="font-size13 text-light-gray">Ivana Wong</div>
                        </td>
                        <td>
-                           <span class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Art</span>
+                           <span class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Vliegtuig HV6094</span>
                            <div class="margin-10px-top font-size14">9:00-10:00</div>
                            <div class="font-size13 text-light-gray">Kate Alley</div>
                        </td>
                        <td>
-                           <span class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">English</span>
+                           <span class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Vliegtuig HV5022</span>
                            <div class="margin-10px-top font-size14">9:00-10:00</div>
                            <div class="font-size13 text-light-gray">James Smith</div>
                        </td>
                        <td>
-                           <span class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">English</span>
+                           <span class="bg-orange padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Vliegtuig HV5368</span>
                            <div class="margin-10px-top font-size14">9:00-10:00</div>
                            <div class="font-size13 text-light-gray">James Smith</div>
                        </td>
@@ -330,4 +326,5 @@
             </table>
         </div>
     </div>
+</main>
 {% endblock %}
