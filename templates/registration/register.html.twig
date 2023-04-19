@@ -3,21 +3,20 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
+    {#{% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+    {% endfor %}#}
 
-    <h1>Register</h1>
+    {#<h1>Register</h1>#}
 
-    {{ form_start(registrationForm) }}
+    {#{{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_row(registrationForm.plainPassword, {label: 'Password'}) }}
+        {{ form_row(registrationForm.repeatPassword, {label: 'Repeat Password'}) }}
+        #}{#{{ form_row(registrationForm.agreeTerms) }}#}{#
 
-        <button type="submit" class="btn btn-success">Register</button>
-    {{ form_end(registrationForm) }}
+        #}{#<button type="submit" class="btn btn-success">Register</button>#}{#
+    {{ form_end(registrationForm) }}#}
 
     <body class="text-center">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -38,26 +37,31 @@
 
     <main class="form-signin w-100 m-auto">
         <form>
+            {#{{ form_start(registrationForm) }}#}
 
             <h1 class="h3 mb-3 fw-normal">Registeren</h1>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Emailadres</label>
+                <input type="email" class="form-control" id="registrationForm.email" placeholder="name@example.com">
+                <label for="registrationForm.email">Emailadres</label>
+                {#{{ form_row(registrationForm.email) }}#}
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Wachtwoord</label>
+                <input type="password" class="form-control" id="registrationForm.plainPassword" placeholder="Password">
+                <label for="registrationForm.plainPassword">Wachtwoord</label>
+                {#{{ form_row(registrationForm.plainPassword, {label: 'Password'}) }}#}
             </div>
-            <div class="form-floating">
+            {#<div class="form-floating">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Herhaal wachtwoord</label>
-            </div>
+                {{ form_row(registrationForm.repeatPassword, {label: 'Repeat Password'}) }}
+            </div>#}
             <div class="d-flex gap-2 justify-content-center py-5">
-                <button class="w-100 btn btn-lg btn-success" type="submit">Aanmelden</button>
-                <a href="{{ path('app_login') }}"><button class="w-100 btn btn-lg btn-primary" type="button">Log in</button></a>
+                <button class="w-40 btn btn-lg btn-success" type="submit">Aanmelden</button>
+                <button type="submit" class="btn btn-success">Register</button>
+                <a href="{{ path('app_login') }}"><button class="w-40 btn btn-lg btn-primary" type="button">Log in</button></a>
             </div>
-
+            {#{{ form_end(registrationForm) }}#}
         </form>
     </main>
     </body>
