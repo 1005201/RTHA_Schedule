@@ -21,24 +21,39 @@
     </svg>
 
     <main class="form-signin w-100 m-auto">
-        <form>
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
 
             <h1 class="h3 mb-3 fw-normal">Inloggen</h1>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                {#om de email of wachtwoord van groot naar klein is de volgorden van belang eerst input en dan label#}
+                <input type="email" name="email" class="form-control" id="floatingInput" value="{{ last_username }}" placeholder="name@example.com" autocomplete="email" required autofocus>
                 <label for="floatingInput">Emailadres</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="current-password" required>
                 <label for="floatingPassword">Wachtwoord</label>
             </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
             <div class="d-flex gap-2 justify-content-center py-5">
                 <a><button class="w-100 btn btn-lg btn-success" type="submit">Log in</button></a>
                 <a href="{{ path('app_forgetten_password') }}"><button class="w-100 btn btn-lg btn-warning" type="button">Wachtwoord vergeten</button></a>
                 <a href="{{ path('app_register') }}"><button class="w-100 btn btn-lg btn-primary" type="button">Aanmelden</button></a>
             </div>
+
         </form>
     </main>
     </body>
 {% endblock %}
+
