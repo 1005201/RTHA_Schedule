@@ -3,22 +3,23 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    {#{% for flash_error in app.flashes('verify_email_error') %}
+    {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}#}
+    {% endfor %}
 
-    {#<h1>Register</h1>#}
+    <h1>Register</h1>
 
-    {#{{ form_start(registrationForm) }}
+    {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {label: 'Password'}) }}
-        {{ form_row(registrationForm.repeatPassword, {label: 'Repeat Password'}) }}
-        #}{#{{ form_row(registrationForm.agreeTerms) }}#}{#
+{#        {{ form_row(registrationForm.repeatPassword, {label: 'Repeat Password'}) }}
+        {{ form_row(registrationForm.agreeTerms) }}#}
 
-        #}{#<button type="submit" class="btn btn-success">Register</button>#}{#
-    {{ form_end(registrationForm) }}#}
+        <button type="submit" class="btn btn-success">Register</button>
+    {{ form_end(registrationForm) }}
+ 
 
-    <body class="text-center">
+   {# <body class="text-center">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="check2" viewBox="0 0 16 16">
             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -36,33 +37,75 @@
     </svg>
 
     <main class="form-signin w-100 m-auto">
-        <form>
-            {#{{ form_start(registrationForm) }}#}
-
+        <form method="post">
             <h1 class="h3 mb-3 fw-normal">Registeren</h1>
 
-            <div class="form-floating">
-                <input type="email" class="form-control" id="registrationForm.email" placeholder="name@example.com">
-                <label for="registrationForm.email">Emailadres</label>
-                {#{{ form_row(registrationForm.email) }}#}
-            </div>
-            <div class="form-floating">
-                <input type="password" class="form-control" id="registrationForm.plainPassword" placeholder="Password">
-                <label for="registrationForm.plainPassword">Wachtwoord</label>
-                {#{{ form_row(registrationForm.plainPassword, {label: 'Password'}) }}#}
-            </div>
-            {#<div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Herhaal wachtwoord</label>
-                {{ form_row(registrationForm.repeatPassword, {label: 'Repeat Password'}) }}
-            </div>#}
+                <div class="form-floating">
+                    #}{#om de email of wachtwoord van groot naar klein is de volgorden van belang eerst input en dan label#}{#
+                    <input type="email" class="form-control" id="registrationForm.email" placeholder="name@example.com">
+                    <label for="registrationForm.email">Emailadres</label>
+
+                </div>
+
+                <div class="form-floating">
+
+                    <input type="password" class="form-control" id="registrationForm.plainPassword" placeholder="Password">
+                    <label for="registrationForm.plainPassword">Wachtwoord</label>
+
+                </div>
+
             <div class="d-flex gap-2 justify-content-center py-5">
-                <button class="w-40 btn btn-lg btn-success" type="submit">Aanmelden</button>
                 <button type="submit" class="btn btn-success">Register</button>
-                <a href="{{ path('app_login') }}"><button class="w-40 btn btn-lg btn-primary" type="button">Log in</button></a>
+                #}{#<button class="w-40 btn btn-lg btn-success" type="submit">Aanmelden</button>
+                #}{#
+#}{#                <a href="{{ path('app_login') }}"><button class="w-40 btn btn-lg btn-primary" type="button">Log in</button></a>#}{#
             </div>
-            {#{{ form_end(registrationForm) }}#}
         </form>
     </main>
-    </body>
+    </body>#}
+
+{#
+
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+    <div class="form-floating">
+        {{ form_row(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+
+#}
+{#                                  <input type="email" class="form-control" id="registrationForm.email" placeholder="name@example.com">
+                                    <input type="email" name="email" class="form-control" id="floatingInput" value="{{ last_username }}" placeholder="name@example.com" autocomplete="email" required autofocus>
+
+                                    <label for="registrationForm.email">Emailadres</label>
+                                    <label for="floatingInput">Emailadres</label>#}{#
+
+    </div>
+    <div class="form-floating">
+        {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Password', 'type': 'password', 'name': 'password'}, 'label': '', 'for': 'floatingPassword' }) }}
+        #}
+{#                                          <input type="password" id="registrationForm.plainPassword"                                                  class="form-control" placeholder="Password">
+                                                    <input type="password" name="password" autocomplete="current-password" required id="floatingPassword"       class="form-control" placeholder="Password">
+
+                                                    <label for="registrationForm.plainPassword">Wachtwoord</label>
+                                                    <label for="floatingPassword">Wachtwoord</label>#}{#
+
+    </div>
+    #}
+{#<div class="form-floating">
+        {{ form_row(registrationForm.repeatPassword, {'label': 'Repeat Password', 'attr': {'class': 'form-control', 'placeholder': 'Repeat Password'}}) }}
+    </div>#}{#
+
+    #}
+{#<div class="form-group form-check">
+        {{ form_row(registrationForm.agreeTerms, {'label_attr': {'class': 'form-check-label'}, 'attr': {'class': 'form-check-input'}}) }}
+        {{ form_label(registrationForm.agreeTerms, 'I agree to the terms', {'label_attr': {'class': 'form-check-label'}}) }}
+    </div>#}{#
+
+
+    <button type="submit" class="btn btn-success">Register</button>
+    {{ form_end(registrationForm) }}#}
 {% endblock %}

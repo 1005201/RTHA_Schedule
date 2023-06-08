@@ -45,6 +45,7 @@
                     <li><a href="{{ path('app_schedule') }}" class="nav-link px-2 link-secondary">Rooster</a></li>
                     <li><a href="{{ path('app_request_leave') }}" class="nav-link px-2">Verlof aanvragen</a></li>
                     <li><a href="{{ path('app_available') }}" class="nav-link px-2">Beschikbaarheid</a></li>
+
                 </ul>
 
                 <div class="col-md-3" style="width: 200px">
@@ -52,12 +53,17 @@
                     <button type="button" class="btn btn-primary">Sign-up</button>#}
                     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_default') }}">Home</a>
+                        {% if app.user %}
                         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_profile_settings') }}">Profile instelling</a>
+                        {% endif %}
                         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_register') }}">Aanmelden</a>
                         {% if app.user %}
                             <a class="py-2 link-body-emphasis text-decoration-none" href="{{ path('app_logout') }}">Logout</a>
                         {% else %}
                             <a class="py-2 link-body-emphasis text-decoration-none" href="{{ path('app_login') }}">Login</a>
+                        {% endif %}
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <a class="me-3 py-2 text-dark text-decoration-none" href="{{ path('admin') }}">Admin</a>
                         {% endif %}
                     </nav>
                 </div>
