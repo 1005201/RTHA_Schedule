@@ -97,8 +97,9 @@
 
                         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_register') }}">Aanmelden</a>
                         {% if app.user %}
-                            {#<a class="py-2 link-body-emphasis text-decoration-none" href="{{ path('app_logout') }}">Logout</a>
-                        {% else %}#}
+                           {# Deze regel moet erbij anders werkt het niet
+                           <a class="py-2 link-body-emphasis text-decoration-none" href="{{ path('app_logout') }}">Logout</a>#}
+                        {% else %}
                             <a class="py-2 link-body-emphasis text-decoration-none" href="{{ path('app_login') }}">Login</a>
                         {% endif %}
                         {% if is_granted("ROLE_ADMIN") %}
