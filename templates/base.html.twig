@@ -11,7 +11,49 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
+    <style>
+        .dropbtn {
+            background-color: #3498DB;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #2980B9;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown a:hover {background-color: #ddd;}
+
+        .show {display: block;}
+    </style>
     </head>
+
     <body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="check" viewBox="0 0 16 16">
@@ -40,34 +82,73 @@
                         {#<svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>#}
                     </a>
                 </div>
-
+                {% if app.user %}
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="width: 400px; margin: 0 0 0 20px;">
                     <li><a href="{{ path('app_schedule') }}" class="nav-link px-2 link-secondary">Rooster</a></li>
                     <li><a href="{{ path('app_request_leave') }}" class="nav-link px-2">Verlof aanvragen</a></li>
                     <li><a href="{{ path('app_available') }}" class="nav-link px-2">Beschikbaarheid</a></li>
-
                 </ul>
+                {% endif %}
 
                 <div class="col-md-3" style="width: 200px">
                     {#<button type="button" class="btn btn-outline-primary me-2">Login</button>
                     <button type="button" class="btn btn-primary">Sign-up</button>#}
                     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_default') }}">Home</a>
-                        {% if app.user %}
-                        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_profile_settings') }}">Profile instelling</a>
-                        {% endif %}
+
                         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_register') }}">Aanmelden</a>
                         {% if app.user %}
-                            <a class="py-2 link-body-emphasis text-decoration-none" href="{{ path('app_logout') }}">Logout</a>
-                        {% else %}
+                            {#<a class="py-2 link-body-emphasis text-decoration-none" href="{{ path('app_logout') }}">Logout</a>
+                        {% else %}#}
                             <a class="py-2 link-body-emphasis text-decoration-none" href="{{ path('app_login') }}">Login</a>
                         {% endif %}
                         {% if is_granted("ROLE_ADMIN") %}
                             <a class="me-3 py-2 text-dark text-decoration-none" href="{{ path('admin') }}">Admin</a>
                         {% endif %}
+
+                        {% if app.user %}
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn">
+                            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <strong>mdo</strong>
+                            <i class="fa fa-caret-down"></i> </button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <h3>Profiel instellingen</h3>
+                                <ul>
+                                    <li><a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{{ path('app_profile_settings') }}">Profile instelling</a></li>
+                                    <li><a href="#">Settings</a></li>
+                                    <li><a href="#">Profile</a></li>
+                                    <br>
+                                    <li>{% if app.user %}
+                                            <a class="py-2 link-body-emphasis text-decoration-none" href="{{ path('app_logout') }}">Logout</a>
+                                        {#{% else %}
+                                            <a class="py-2 link-body-emphasis text-decoration-none" href="{{ path('app_login') }}">Login</a>#}
+                                        {% endif %}</li>
+                                </ul>
+                            </div>
+                        </div>{% endif %}
+                        <script>
+                            /* When the user clicks on the button,
+                            toggle between hiding and showing the dropdown content */
+                            function myFunction() {
+                                document.getElementById("myDropdown").classList.toggle("show");
+                            }
+
+                            // Close the dropdown if the user clicks outside of it
+                            window.onclick = function(event) {
+                                if (!event.target.matches('.dropbtn')) {
+                                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                                    var i;
+                                    for (i = 0; i < dropdowns.length; i++) {
+                                        var openDropdown = dropdowns[i];
+                                        if (openDropdown.classList.contains('show')) {
+                                            openDropdown.classList.remove('show');
+                                        }
+                                    }
+                                }
+                            }
+                        </script>
                     </nav>
                 </div>
-
             </header>
         </div>
 {#
@@ -86,6 +167,7 @@
     <div class="container">
         {% block body %}{% endblock %}
     </div>
+
 
     </body>
 </html>
