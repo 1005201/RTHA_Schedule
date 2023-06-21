@@ -4,7 +4,7 @@ Personeel rooster voor vliegveld Rotterdam The Hague Airport
 # Installatie
 - Ga op jouw pc in CLI (Command Line Interface, dosbox, powershell) naar jou directory: b.v. "cd \xampp\htdocs" (prompt in dosbox word dan "C:\XAMPP\HTDOCS>")
 - Voer uit het commando: "git clone https://github.com/1005201/RTHA_Schedule.git" (hierdoor krijg je in je htdocs een subdir "RTHA Schedule")
-- Ga naar de nieuwe directory "cd zorg" (je prompt word nu "C:\XAMPP\HTDOCS\RTHA_Schedule")
+- Ga naar de nieuwe directory "cd rtha_schedule" (je prompt word nu "C:\XAMPP\HTDOCS\RTHA_Schedule")
 - Gebuik nu composer om de installatie klaar te maken met "composer install"
 - Met "yarn install" installeer je de WebEncore in de Symfony applicatie.
 - "yarn encore dev-server" of "yarn watch" om de installatie te activeren en automatisch de wijzigingen lokaal door te voeren.
