@@ -22,9 +22,13 @@ class Task
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $roles = null;
 
+    #[ORM\OneToMany(mappedBy: 'task', targetEntity: category::class)]
+    private Collection $category;
+
     public function __construct()
     {
         $this->schedule = new ArrayCollection();
+        $this->category = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -64,6 +68,36 @@ class Task
     public function setRoles(?string $roles): static
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, category>
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(category $category): static
+    {
+        if (!$this->category->contains($category)) {
+            $this->category->add($category);
+            $category->setTask($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(category $category): static
+    {
+        if ($this->category->removeElement($category)) {
+            // set the owning side to null (unless already changed)
+            if ($category->getTask() === $this) {
+                $category->setTask(null);
+            }
+        }
 
         return $this;
     }

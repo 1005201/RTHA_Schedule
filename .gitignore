@@ -1,7 +1,7 @@
 
 ###> symfony/framework-bundle ###
-/.env.local
-/.env.local.php
+/.env
+/.env.test
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
@@ -24,4 +24,11 @@
 /public/build/
 npm-debug.log
 yarn-error.log
+/yarn.lock
+/webpack.config.js
+/symfony.lock
+/package-lock.json
+/package.json
+/composer.lock
+/composer.json
 ###< symfony/webpack-encore-bundle ###
