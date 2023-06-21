@@ -10,7 +10,8 @@ Met "yarn install" installeer je de WebEncore in de Symfony applicatie.
 "yarn encore dev-server" of "yarn watch" om de installatie te activeren en automatisch de wijzigingen lokaal door te voeren.
 "symfony serve" om de server te starten. (omdat het vorige commando blijft kijken naar de app.css en app.js in de "assets" directory) kan je beter een tweede CLI openen voor symfony serve.
 in een derde box kan je daarna nog de andere commandos uitvoeren.
-Enviroment ".env" bestand
+
+# Enviroment ".env" bestand
 In .env bestand kun je jouw instelling voor MySQL maken.
 
 DATABASE_URL="mysql://root@localhost/rthaschedule?serverVersion=8&charset=utf8mb4"
@@ -18,7 +19,8 @@ DATABASE_URL="mysql://root@localhost/rthaschedule?serverVersion=8&charset=utf8mb
 Wijzig "root" in eigen credentials (b.v "root:" bij XAMPP, omdat standaard geen wachtwoord nodig is in XAMPP)
 voer uit: - php bin/console doctrine:database:create
 voer uit: - php bin/console doctrine:schema:update --force --complete
-Werkwijze programmeren
+
+# Werkwijze programmeren
 branch -> maak een branch aan per UserStory en noem deze zoals je de UserStory in Trello genoemd hebt.
 programmeer in deze branch jouw aanpassingen en nieuwe code
 commit/push om de code naar de locale (commit) en github (push) te sturen.
@@ -26,7 +28,7 @@ Pull Request als je de code in de master branch wilt laten opnemen, PR (Pull Req
 Merge, als de code geen problemen opleverd en iedereen het eens is met de door jou gemaakte code.
 Als de master branch wijzigd word er een automatische verwerking gedaan naar de server (word dus meteen CI/CD doorgevoerd)
 
-Benodigdheden
+# Benodigdheden
 De programmas die je nodig hebt zijn gratis (Open Source)
 
 composer https://getcomposer.org/download/
