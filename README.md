@@ -14,9 +14,9 @@ Personeel rooster voor vliegveld Rotterdam The Hague Airport
 # Enviroment ".env" bestand
 In .env bestand kun je jouw instelling voor MySQL maken.
 
-DATABASE_URL="mysql://root@localhost/rthaschedule?serverVersion=8&charset=utf8mb4"
+DATABASE_URL="mysql://root:*blank@localhost/rthaschedule?serverVersion=8&charset=utf8mb4"
 
-- Wijzig "root" in eigen credentials (b.v "root:" bij XAMPP, omdat standaard geen wachtwoord nodig is in XAMPP)
+- Wijzig "root:*blank" in eigen credentials (b.v "root:*blank" bij XAMPP, omdat standaard geen wachtwoord nodig is in XAMPP)
 - voer uit: - php bin/console doctrine:database:create
 - voer uit: - php bin/console doctrine:schema:update --force --complete
 
