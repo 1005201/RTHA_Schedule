@@ -96,6 +96,37 @@
     </style>
 
     <main>
+
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="start-time">Start Time:</label>
+            <input type="time" id="start-time" name="start-time" required>
+
+            <label for="end-time">End Time:</label>
+            <input type="time" id="end-time" name="end-time" required>
+
+            <label for="day">Day:</label>
+            <select id="day" name="day" required>
+                <option value="" disabled selected>Select a day</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+
+            <input type="submit" value="Submit">
+        </form>
+
+
+
         <h1 class="h2">Rooster</h1>
         <div class="d-flex justify-content-start flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <div class="btn-group-lg">
@@ -105,6 +136,9 @@
             </div>
         </div>
 
+
+
+        </div>
         <div class="container">
             <div class="table-responsive">
                 <table class="table table-bordered text-center">
@@ -119,6 +153,7 @@
                         <th class="text-uppercase">Zondag</th>
                     </tr>
                     </thead>
+
                     <tbody>
                         <tr>{# tussen 9:00 en 10:00#}
                             <td>
