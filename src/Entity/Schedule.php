@@ -31,6 +31,9 @@ class Schedule
     #[ORM\JoinColumn(nullable: false)]
     private ?Periode $periode = null;
 
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $end_time = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,6 +95,18 @@ class Schedule
     public function setPeriode(?Periode $periode): static
     {
         $this->periode = $periode;
+
+        return $this;
+    }
+
+    public function getEndTime(): ?\DateTimeInterface
+    {
+        return $this->end_time;
+    }
+
+    public function setEndTime(\DateTimeInterface $end_time): static
+    {
+        $this->end_time = $end_time;
 
         return $this;
     }
