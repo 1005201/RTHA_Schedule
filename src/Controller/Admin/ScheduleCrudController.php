@@ -21,7 +21,7 @@ class ScheduleCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('id'),
+            AssociationField::new('user'),
             DateField::new('date'),
             TimeField::new('time'),
             TimeField::new('end_time'),
